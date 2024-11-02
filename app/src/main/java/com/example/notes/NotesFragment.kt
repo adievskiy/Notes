@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -46,15 +47,19 @@ class NotesFragment : Fragment() {
         notes.addAll((db.getInfo()))
 
         updateBTN.setOnClickListener {
-            val id = IdGenerator(db).addId()
-            val note = noteET.text.toString()
-            val date = SimpleDateFormat("dd:MM:yyyy HH:mm", Locale.getDefault())
-            val currentDate = date.format(Date()).toString()
-            val newNote = Notes(id, note, currentDate)
-            db.addNote(newNote)
-            notes.clear()
-            notes.addAll(db.getInfo())
-            adapter.notifyDataSetChanged()
+            if (noteET.text.isEmpty()) {
+                Toast.makeText(requireContext(), "Введите заметку", Toast.LENGTH_LONG).show()
+            } else {
+                val id = IdGenerator(db).addId()
+                val note = noteET.text.toString()
+                val date = SimpleDateFormat("dd:MM:yyyy HH:mm", Locale.getDefault())
+                val currentDate = date.format(Date()).toString()
+                val newNote = Notes(id, note, currentDate)
+                db.addNote(newNote)
+                notes.clear()
+                notes.addAll(db.getInfo())
+                adapter.notifyDataSetChanged()
+            }
         }
     }
 
