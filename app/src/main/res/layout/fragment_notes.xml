@@ -11,12 +11,23 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/noteET"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:hint="@string/hintNoteET"
-            android:textAlignment="textEnd" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/noteET"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/hintNoteET"/>
+
+            <CheckBox
+                android:id="@+id/isChecked"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/updateBTN"
