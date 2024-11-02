@@ -49,6 +49,7 @@ class NotesFragment : Fragment() {
                 val date = SimpleDateFormat("dd:MM:yyyy HH:mm", Locale.getDefault())
                 val currentDate = date.format(Date()).toString()
                 val newNote = Notes(id, note, currentDate)
+                noteET.text.clear()
                 db.addNote(newNote)
                 notes.clear()
                 notes.addAll(db.getInfo())
