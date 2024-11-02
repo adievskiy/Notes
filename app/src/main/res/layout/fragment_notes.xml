@@ -9,27 +9,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        tools:ignore="UselessParent">
+        android:orientation="vertical">
 
-        <LinearLayout
+        <EditText
+            android:id="@+id/noteET"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/noteET"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="@string/hintNoteET"
-                tools:ignore="Autofill,TextFields" />
-
-            <CheckBox
-                android:id="@+id/isChecked"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+            android:layout_height="100dp"
+            android:hint="@string/hintNoteET"
+            android:textAlignment="textEnd" />
 
         <Button
             android:id="@+id/updateBTN"
