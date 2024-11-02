@@ -70,6 +70,14 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         db.delete(TABLE_NAME, null, null)
     }
 
+    fun deleteNote(notes: Notes) {
+        val db = writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put(KEY_ID, notes.id)
+        db.delete(TABLE_NAME, "id=" + notes.id, null)
+        db.close()
+    }
+
     fun isIdExists(id: Int): Boolean {
         val db = this.readableDatabase
         val cursor = db.rawQuery(

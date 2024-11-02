@@ -13,7 +13,7 @@ class RecyclerAdapter(private val notes: MutableList<Notes>) :
     private var onNotesClickListener: OnNotesClickListener? = null
 
     interface OnNotesClickListener {
-        fun onNotesClick(notes: Notes, position: Int)
+        fun inItemClick(note: Notes)
     }
 
     class NotesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -37,9 +37,11 @@ class RecyclerAdapter(private val notes: MutableList<Notes>) :
         holder.dateTV.text = note.date
         holder.noteTV.text = note.note
         holder.itemView.setOnClickListener {
-            if (onNotesClickListener != null) {
-                onNotesClickListener!!.onNotesClick(note, position)
-            }
+            onNotesClickListener!!.inItemClick(note)
         }
+    }
+
+    fun setOnUserClickListener(onNotesClickListener: OnNotesClickListener) {
+        this.onNotesClickListener = onNotesClickListener
     }
 }
