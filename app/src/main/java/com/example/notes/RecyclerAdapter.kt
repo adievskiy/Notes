@@ -33,7 +33,7 @@ class RecyclerAdapter(private val notes: MutableList<Notes>) :
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: NotesViewHolder, position: Int) {
         val note = notes[position]
-        holder.idTV.text = "№ ${note.id.toString()}"
+        holder.idTV.text = "№ ${note.id}"
         holder.dateTV.text = note.date
         holder.noteTV.text = note.note
         holder.itemView.setOnClickListener {
